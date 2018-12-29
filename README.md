@@ -22,10 +22,21 @@ CoroutineUtility.GetInstance().Do()
     .Go();
 ```
 
-**Move gameobject to (0,0,1), and then call the function MoveComplete() **
+**Move gameobject to (0,0,1) in 1 second, and then call the function MoveCompleted()** 
 ```csharp==
 CoroutineUtility.GetInstance().Do()
-    .Move(obj,)
-    .Play("Jump", animator)
+    .Move(obj, new Vector(0,0,1), 1)
+    .Then(MoveCompleted)
+    .Go();
+```
+
+**Lambda** 
+```csharp==
+CoroutineUtility.GetInstance().Do()
+    .Move(obj, new Vector(0,0,1), 1)
+    .Then(MoveCompleted)
+    .Then(() => {
+        Debug.Log("Move Completed");
+    })
     .Go();
 ```
