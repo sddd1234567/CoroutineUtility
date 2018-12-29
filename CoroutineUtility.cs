@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class CoroutineUtility : MonoBehaviour
 {
-    public static CoroutineUtility Instance;
+    public static CoroutineUtility Instance;    //Singleton
     private void Awake()
     {
         if (Instance == null)
@@ -22,6 +22,7 @@ public class CoroutineUtility : MonoBehaviour
         return Instance;
     }
     
+    //建立CoroutineQueue回傳並開始排序工作
     public CoroutineQueue Do()
     {
         CoroutineQueue animObj = new CoroutineQueue(this);
@@ -62,12 +63,6 @@ public class CoroutineQueue
     public CoroutineQueue UIMove(GameObject obj, Vector2 newPos, float time)
     {
         waitQueue.Add(MoveUIObj(obj, newPos, time));
-        return this;
-    }
-
-    public CoroutineQueue RadiusUIMove(GameObject obj, Vector2 newPos, float xRadius, float yRadius, float time)
-    {
-        waitQueue.Add(RadiusMoveUIObj(obj, newPos, xRadius, yRadius, time));
         return this;
     }
 
