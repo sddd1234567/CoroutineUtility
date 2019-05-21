@@ -60,12 +60,6 @@ public class CoroutineQueue
         return this;
     }
 
-    public CoroutineQueue UIMove(GameObject obj, Vector2 newPos, float time)
-    {
-        waitQueue.Add(MoveUIObj(obj, newPos, time));
-        return this;
-    }
-
     public CoroutineQueue Then(UnityAction call)
     {
         waitQueue.Add(DoCall(call));
